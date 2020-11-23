@@ -14,7 +14,6 @@
 #' @seealso \code{\link{source}}
 #'
 #' @export
-#' @importFrom utils capture.output packageVersion
 # -----------------------------------------------------------------------------#
 
 .source <- function(file, echo= F, path = "../logs") {
