@@ -13,3 +13,4 @@ Imports:
   dplyr,
   english
 Suggests: testthat
+RoxygenNote: 7.1.1
