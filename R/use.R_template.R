@@ -1,12 +1,8 @@
 use.template <- function(file,
-                         author,
                          extension,
                          template_file
 ) {
-  stopifnot(
-    !missing(file),
-    !missing(author)
-  )
+  stopifnot( !missing(file) )
 
   #  template_path = path to the template file
   template_path <- system.file(
@@ -22,9 +18,7 @@ use.template <- function(file,
   ##  Substitute the entities in the templates with the given values in this
   ##  function
   out_text <- readLines(template_path) %>%
-    gsub('\\{\\{\\{ title \\}\\}\\}', title, .) %>%
-    gsub('\\{\\{\\{ author \\}\\}\\}', author, .) %>%
-    gsub('\\{\\{\\{ date \\}\\}\\}', as.character(date), .)
+    gsub('\\{\\{\\{ title \\}\\}\\}', title, .)
 
   ##  allow both with or without extension in 'file'
   base_fn <- sub(ext_pattern, "", basename(file))
@@ -61,7 +55,6 @@ use.template <- function(file,
 #'
 #' @param file The name of the generating file. The ".R" or ".Rmd" extension
 #'   will be added if it is missing.
-#' @param author The author of the script
 #'
 #' @examples
 #' \dontrun{
@@ -77,10 +70,9 @@ use.template <- function(file,
 # modified :
 # -----------------------------------------------------------------------------#
 
-use.R_template <- function(file, author) {
+use.R_template <- function(file) {
   use.template(
     file = file,
-    author = author,
     extension = ".R",
     template_file= "dot_R_template.R"
   )
@@ -102,10 +94,9 @@ use.R_template <- function(file, author) {
 # modified :
 # -----------------------------------------------------------------------------#
 
-use.Rmd_template <- function(file, author) {
+use.Rmd_template <- function(file) {
   use.template(
     file = file,
-    author = author,
     extension = ".Rmd",
     template_file= "dot_Rmd_template.Rmd"
   )

@@ -1,45 +1,73 @@
 ---
-title: "{{{ title }}}"
-author: "{{{ author }}}"
-date: '`r format(Sys.time(), "%B %d, %Y")`'
-output: 
+params:
+  project_title: ""
+  project_short_title: ""
+  redmine_issue: "#"
+  requester_name: ""
+  requester_mail: ""
+  pi_name: ""
+  pi_mail: ""
+  organisation: ""
+  staff_name: ""
+  staff_mail: ""
+  staff_web: ""
+title: "`r params$project_title`"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
   html_document:
-    theme: readable
     toc: true
-    toc_float: true
-    toc_depth: 3
-    fig_caption: true
+    toc_float: 
+      collapse : false
+    toc_depth: 4
+    # code_folding: hide
+    number_sections: true
 knit: (function(inputFile, encoding) {
-  rmarkdown::render(inputFile, encoding = encoding, output_dir = "../intermediate/rmd") })
+  rmarkdown::render(inputFile, encoding= encoding, output_dir= "../reports") })
 ---
 
 <style>
 p.caption {
-  font-size: 1em;
+  font-size: 0.8em;
+  font-family: Helvetica, sans-serif;
 }
 </style>
 
 
-```{r setup, include=FALSE}
+```{r Setup, echo= FALSE, include=FALSE}
 knitr::opts_chunk$set(
-	echo = F,
-	# dev = c('png', 'pdf'),   # save figures in two formats
-	# fig.path = '../intermediate/rmd/figure/',  # save figure in files
-	results = 'asis'
+	echo= F,    # comment out for code_folding
+	# dev= c('png', 'pdf'),   # save figures in two formats
+	# fig.path= '../reports/figure/',  # save figure in files
+  fig.width = 8,
+  fig.height= 6,
+  results   = "asis",
+  message   = FALSE,
+  warning   = FALSE
 )
-
-library(tidyverse)
-library(Useful2me)
-  # renv::install("Rundmus/Useful2me-R_package")  # when 'renv' used
-  # remotes::install_github("Rundmus/Useful2me-R_package", upgrade= "never")
-library(knitr)
-# library(kableExtra)     # kable_styling
-# library(janitor)     # tabyl, fisher.test
-
-rm(list = ls())
 ```
 
-```{r filenames}
+```{r loading}
+
+###  Packages
+
+library(tidyverse)
+library(NBISsupport)    # english, english_cap1, enum_vars
+  # renv::install("Rundmus/NBISsupport-R_package")
+library(knitr)
+# library(kableExtra)     # kbl, kable_styling
+# library(janitor)        # tabyl, adorn_*
+
+###  Options
+options(
+  #  NA in `kable` is displayed as ''
+  knitr.kable.NA = '',
+  #  prevent "`summarise()` ungrouping output (override with `.groups` argument)"
+  dplyr.summarise.inform= FALSE
+)
+
+###  Clean up the workspace
+rm(list= ls()[ls() != 'params'])
+
 ###  File names
 
 fn <- list(
@@ -49,30 +77,47 @@ fn <- list(
 
 #  Check all exists
 stopifnot(all(file.exists(c('.', unlist(fn$i)))))
+
+###  CONSTANTS
+
 ```
+
+#  Project information
+
+ * Redmine issue: **`r params$redmine_issue`**
+ * NBIS staff: **`r params$staff_name`**
+ * Request by: **`r params$requester_name`**
+ * Principal investigator: **`r params$pi_name`**
+ * Organisation: **`r params$organisation`**
+
+----------------------------
+
+#  Data
 
 ```{r load}
 
 ```
 
 
+##  Dimension
+
+* Number of samples : 
+* Number of 
 
 ----------------------------
 
-##  Background
-
-###  Study design
+#  Analysis
 
 
-###  Data
-
-
-###  Notes
 
 ----------------------------
 
-##  Analysis
+#  Appendix
+
+##  R environment
 
 ```{r sessionInfo, results='markup'}
 sessionInfo()
 ```
+
+
