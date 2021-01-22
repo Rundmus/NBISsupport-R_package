@@ -1,24 +1,13 @@
 ---
-params:
-  project_title: ""
-  project_short_title: ""
-  redmine_issue: "#"
-  requester_name: ""
-  requester_mail: ""
-  pi_name: ""
-  pi_mail: ""
-  organisation: ""
-  staff_name: ""
-  staff_mail: ""
-  staff_web: ""
-title: "`r params$project_title`"
+title: "{{{ title }}}"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
+    theme: cerulean
     toc: true
     toc_float: 
       collapse : false
-    toc_depth: 4
+    toc_depth: 3
     # code_folding: hide
     number_sections: true
 knit: (function(inputFile, encoding) {
@@ -27,49 +16,38 @@ knit: (function(inputFile, encoding) {
 
 <style>
 p.caption {
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-family: Helvetica, sans-serif;
 }
 </style>
 
 
-```{r Setup, echo= FALSE, include=FALSE}
+```{r setup, echo= FALSE, include=FALSE}
 knitr::opts_chunk$set(
 	echo= F,    # comment out for code_folding
 	# dev= c('png', 'pdf'),   # save figures in two formats
 	# fig.path= '../reports/figure/',  # save figure in files
-  fig.width = 8,
-  fig.height= 6,
-  results   = "asis",
-  message   = FALSE,
-  warning   = FALSE
+  fig.width  = 8,
+  fig.height = 6,
+  results = "asis",   # for HTML
+  message = FALSE,    # no message from the code
+  warning = FALSE,    # no warning from the code
+	eval.after = "fig.cap",    # to add fig. caption within the chunk
+	purl = FALSE      # because most of the code are not to be extracted
 )
 ```
 
-```{r loading}
-
-###  Packages
-
+```{r Header, purl=TRUE}
+##  Pre-loaded packages 
+# Please note that many functions were called directly from the package using 
+# double colon '::' to make the source clearer. 
 library(tidyverse)
 library(NBISsupport)    # english, english_cap1, enum_vars
   # renv::install("Rundmus/NBISsupport-R_package")
-library(knitr)
-# library(kableExtra)     # kbl, kable_styling
-# library(janitor)        # tabyl, adorn_*
 
-###  Options
-options(
-  #  NA in `kable` is displayed as ''
-  knitr.kable.NA = '',
-  #  prevent "`summarise()` ungrouping output (override with `.groups` argument)"
-  dplyr.summarise.inform= FALSE
-)
+rm(list = ls())
 
-###  Clean up the workspace
-rm(list= ls()[ls() != 'params'])
-
-###  File names
-
+##  File names
 fn <- list(
 	i = list(                               #  input
 	)
@@ -82,31 +60,12 @@ stopifnot(all(file.exists(c('.', unlist(fn$i)))))
 
 ```
 
-#  Project information
+#  Chapter
 
- * Redmine issue: **`r params$redmine_issue`**
- * NBIS staff: **`r params$staff_name`**
- * Request by: **`r params$requester_name`**
- * Principal investigator: **`r params$pi_name`**
- * Organisation: **`r params$organisation`**
+##  Quality control
+
 
 ----------------------------
-
-#  Data
-
-```{r load}
-
-```
-
-
-##  Dimension
-
-* Number of samples : 
-* Number of 
-
-----------------------------
-
-#  Analysis
 
 
 
@@ -119,5 +78,3 @@ stopifnot(all(file.exists(c('.', unlist(fn$i)))))
 ```{r sessionInfo, results='markup'}
 sessionInfo()
 ```
-
-
