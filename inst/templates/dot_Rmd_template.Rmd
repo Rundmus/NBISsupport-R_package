@@ -22,7 +22,7 @@ p.caption {
 </style>
 
 
-```{r setup, echo= FALSE, include=FALSE}
+```{r setup, echo=FALSE, include=FALSE}
 knitr::opts_chunk$set(
 	echo= F,    # comment out for code_folding
 	# dev= c('png', 'pdf'),   # save figures in two formats
