@@ -53,8 +53,9 @@ fn <- list(
 	)
 )
 
-#  Check all exists
-stopifnot(all(file.exists(c('.', unlist(fn$i)))))
+#  Short check all exists
+tmp <- unlist(c(fn$i, "."))
+stopifnot(all( file.exists(tmp[!grepl("\\.sheet", names(tmp))]) )); rm(tmp)
 
 ###  CONSTANTS
 

@@ -18,7 +18,8 @@ use.template <- function(file,
   ##  Substitute the entities in the templates with the given values in this
   ##  function
   out_text <- readLines(template_path) %>%
-    gsub('\\{\\{\\{ title \\}\\}\\}', title, .)
+    gsub('\\{\\{\\{ title \\}\\}\\}', title, .) %>%
+    gsub('\\{\\{\\{ date \\}\\}\\}', as.character(date), .)
 
   ##  allow both with or without extension in 'file'
   base_fn <- sub(ext_pattern, "", basename(file))

@@ -1,24 +1,34 @@
 # -----------------------------------------------------------------------------#
 # {{{ title }}}
 # -----------------------------------------------------------------------------#
+# initiated on {{{ date }}}
+# authors :
+# -----------------------------------------------------------------------------#
 rm(list = ls())
 
 library(dplyr)
+# library(readxl)
 # library(tidyverse)
-library(NBISsupport)    # english, english_cap1, enum_vars
-  # renv::install("Rundmus/NBISsupport-R_package")
+# library(NBISsupport)  # renv::install("Rundmus/NBISsupport-R_package")
 
 #----- File names --------------------------------------------------------------
 
 fn <- list(
   i = list(                               #  input
+    # excel = list(    # Excel file
+    #   path = "an_excel.xlsx",
+    #   sheet = "sheet 1"
+    # ),
+    # tsv = "a_tsv.tsv"
   ),
   o = list(                               #  output
+    # out1 = "../data/data1.RData",
+    # out2 = "../data/data2.RData"
   )
 )
 
-#  Check all exists
-stopifnot(all(file.exists(c('.', unlist(fn$i)))),
-          all(file.exists(dirname(c('.', unlist(fn$o))))))
+#  Short check all exists
+tmp <- unlist(c(fn$i, lapply(fn$o, dirname), "."))
+stopifnot(all( file.exists(tmp[!grepl("\\.sheet", names(tmp))]) )); rm(tmp)
 
 #----- MAIN --------------------------------------------------------------------
