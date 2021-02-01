@@ -19,7 +19,9 @@ use.template <- function(file,
   ##  function
   out_text <- readLines(template_path) %>%
     gsub('\\{\\{\\{ title \\}\\}\\}', title, .) %>%
-    gsub('\\{\\{\\{ date \\}\\}\\}', as.character(date), .)
+    gsub('\\{\\{\\{ date \\}\\}\\}', as.character(date), .) %>%
+    gsub('\\{\\{\\{ author \\}\\}\\}',
+         tools::toTitleCase(gsub("\\.", " ", ps::ps_username())), .)  # user name
 
   ##  allow both with or without extension in 'file'
   base_fn <- sub(ext_pattern, "", basename(file))
@@ -63,6 +65,8 @@ use.template <- function(file,
 #' }
 #'
 #' @author Mun-Gwan Hong, \email{mungwan@gmail.com}
+#' @importFrom tools toTitleCase
+#' @importFrom ps ps_username
 #' @export
 #'
 #' @rdname use_template

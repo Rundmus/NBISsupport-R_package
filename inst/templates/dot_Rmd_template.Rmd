@@ -1,5 +1,6 @@
 ---
 title: "{{{ title }}}"
+author: "{{{ author }}}"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
@@ -24,7 +25,7 @@ p.caption {
 
 ```{r setup, echo=FALSE, include=FALSE}
 knitr::opts_chunk$set(
-	echo= F,    # comment out for code_folding
+	echo = FALSE,    # comment out for code_folding
 	# dev= c('png', 'pdf'),   # save figures in two formats
 	# fig.path= '../reports/figure/',  # save figure in files
   fig.width  = 8,
@@ -37,13 +38,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r Header, purl=TRUE}
-##  Pre-loaded packages 
+```{r Loading, purl=TRUE}
+##  Pre-loaded package 
 # Please note that many functions were called directly from the package using 
 # double colon '::' to make the source clearer. 
 library(tidyverse)
-library(NBISsupport)    # english, english_cap1, enum_vars
-  # renv::install("Rundmus/NBISsupport-R_package")
 
 rm(list = ls())
 
@@ -57,7 +56,7 @@ fn <- list(
 tmp <- unlist(c(fn$i, "."))
 stopifnot(all( file.exists(tmp[!grepl("\\.sheet", names(tmp))]) )); rm(tmp)
 
-###  CONSTANTS
+#  Loading
 
 ```
 
