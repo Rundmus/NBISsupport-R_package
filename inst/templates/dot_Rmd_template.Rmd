@@ -24,39 +24,44 @@ p.caption {
 
 
 ```{r setup, echo=FALSE, include=FALSE}
+## Pre-loaded packages
+# Please note that many functions were called directly from the package using 
+# double colon '::' to make the source clearer. 
+library(tidyverse)
+library(kableExtra)
+
+rm(list = ls())
+
 knitr::opts_chunk$set(
 	echo = FALSE,    # comment out for code_folding
 	# dev= c('png', 'pdf'),   # save figures in two formats
 	# fig.path= '../reports/figure/',  # save figure in files
-  fig.width  = 8,
-  fig.height = 6,
   results = "asis",   # for HTML
   message = FALSE,    # no message from the code
   warning = FALSE,    # no warning from the code
+	cache.path = "../cache/",   # cache the results from heavy analyses
+  fig.width  = 8,
+  fig.height = 6,
 	eval.after = "fig.cap",    # to add fig. caption within the chunk
 	purl = FALSE      # because most of the code are not to be extracted
 )
+options(knitr.kable.NA = '')  # NA is shown as ''
 ```
 
-```{r Loading, purl=TRUE}
-##  Pre-loaded package 
-# Please note that many functions were called directly from the package using 
-# double colon '::' to make the source clearer. 
-library(tidyverse)
-
-rm(list = ls())
-
-##  File names
+```{r Load data, purl=TRUE}
+## File names
 fn <- list(
-	i = list(                               #  input
+	i = list(                               # input
 	)
 )
 
-#  Short check all exists
-tmp <- unlist(c(fn$i, "."))
-stopifnot(all( file.exists(tmp[!grepl("\\.sheet", names(tmp))]) )); rm(tmp)
+# Brief check if all files exist
+stopifnot(all(file.exists(unlist(fn$i))))
+# # for Excel sheet
+# tmp <- unlist(c(fn$i, "."))
+# stopifnot(all( file.exists(tmp[!grepl("\\.sheet", names(tmp))]) )); rm(tmp)
 
-#  Loading
+# Loading
 
 ```
 
