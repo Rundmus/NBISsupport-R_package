@@ -26,6 +26,9 @@ library(kableExtra)
 
 rm(list = ls())
 
+knitr::knit_hooks$set(
+  optipng = knitr::hook_optipng   # Optimize PNG plots
+)
 knitr::opts_chunk$set(
 	echo = FALSE,    # comment out for code_folding
 	# dev = c('pdf'), fig.path = '../results/figures/', # export figures to pdf files
@@ -36,6 +39,7 @@ knitr::opts_chunk$set(
   fig.width  = 8,
   fig.height = 6,
 	eval.after = "fig.cap",    # to add fig. caption within the chunk
+  optipng = '-o1', # '-o7 -zc9 -zm8 -zs0', # Optimize 'png' plots
 	purl = FALSE      # because most of the code are not to be extracted
 )
 options(knitr.kable.NA = '')  # NA is shown as ''
