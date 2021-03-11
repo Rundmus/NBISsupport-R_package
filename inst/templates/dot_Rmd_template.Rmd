@@ -11,17 +11,11 @@ output:
     toc_depth: 3
     # code_folding: hide
     number_sections: true
+    # css: styles.css
+# bibliography: citations_in_report.bib
 knit: (function(inputFile, encoding) {
   rmarkdown::render(inputFile, encoding= encoding, output_dir= "../reports") })
 ---
-
-<style>
-p.caption {
-  font-size: 0.9em;
-  font-family: Helvetica, sans-serif;
-}
-</style>
-
 
 ```{r setup, echo=FALSE, include=FALSE}
 ## Pre-loaded packages
@@ -34,8 +28,7 @@ rm(list = ls())
 
 knitr::opts_chunk$set(
 	echo = FALSE,    # comment out for code_folding
-	# dev= c('png', 'pdf'),   # save figures in two formats
-	# fig.path= '../reports/figure/',  # save figure in files
+	# dev = c('pdf'), fig.path = '../results/figures/', # export figures to pdf files
   results = "asis",   # for HTML
   message = FALSE,    # no message from the code
   warning = FALSE,    # no warning from the code
