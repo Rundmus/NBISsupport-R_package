@@ -15,15 +15,12 @@ library(dplyr)
 
 fn <- list(
   i = list(                               #  input
-    # excel = list(    # Excel file
-    #   path = "an_excel.xlsx",
-    #   sheet = "sheet 1"
-    # ),
+    # clinic = "an_clinical.xlsx",
     # tsv = "a_tsv.tsv"
   ),
   o = list(                               #  output
-    # out1 = "../data/data1.RData",
-    # out2 = "../data/data2.RData"
+    # c01 = "../data/s1-clinical.v01.RData"
+    # olk01 = "../data/s2-olink_proteomic.v01.RData"
   )
 )
 
