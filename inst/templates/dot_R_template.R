@@ -7,7 +7,6 @@
 rm(list = ls())
 
 library(dplyr)
-# library(readxl)
 # library(tidyverse)
 # library(NBISsupport)  # renv::install("Rundmus/NBISsupport-R_package")
 
@@ -15,8 +14,8 @@ library(dplyr)
 
 fn <- list(
   i = list(                               #  input
-    # clinic = "an_clinical.xlsx",
-    # tsv = "a_tsv.tsv"
+    # clinic = "../data/raw_internal/20210101/an_clinical.xlsx",   # use readxl::read_xlsx
+    # tsv = "../data/raw_internal/20210101/a_tsv.tsv"
   ),
   o = list(                               #  output
     # c01 = "../data/s1-clinical.v01.RData"
@@ -24,14 +23,10 @@ fn <- list(
   )
 )
 
-#  Short check all exists
-tmp <- unlist(c(fn$i, lapply(fn$o, dirname), "."))
-stopifnot(all( file.exists(tmp[!grepl("\\.sheet", names(tmp))]) )); rm(tmp)
-
 # Confirm if all files exist and are the same as before using MD5 hash
 stopifnot(
   all(file.exists(c('.', unlist(fn$i), dirname(unlist(fn$o))))),
-  digest::digest(fn$i$file1, file = T) == "[[MD5_hash]]"
+  digest::digest(fn$i$file1, file = T) == "MD5_hash"
 )
 
 #----- MAIN --------------------------------------------------------------------
