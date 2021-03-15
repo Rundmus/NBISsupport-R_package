@@ -26,9 +26,11 @@ library(kableExtra)
 
 rm(list = ls())
 
+## Chunk hooks
 knitr::knit_hooks$set(
   optipng = knitr::hook_optipng   # Optimize PNG plots
 )
+## Set default chunk options
 knitr::opts_chunk$set(
 	echo = FALSE,    # comment out for code_folding
 	# dev = c('pdf'), fig.path = '../results/figures/', # export figures to pdf files

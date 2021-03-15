@@ -31,4 +31,10 @@ fn <- list(
 tmp <- unlist(c(fn$i, lapply(fn$o, dirname), "."))
 stopifnot(all( file.exists(tmp[!grepl("\\.sheet", names(tmp))]) )); rm(tmp)
 
+# Confirm if all files exist and are the same as before using MD5 hash
+stopifnot(
+  all(file.exists(c('.', unlist(fn$i), dirname(unlist(fn$o))))),
+  digest::digest(fn$i$file1, file = T) == "[[MD5_hash]]"
+)
+
 #----- MAIN --------------------------------------------------------------------
