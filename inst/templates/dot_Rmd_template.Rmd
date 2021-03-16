@@ -23,6 +23,8 @@ knit: (function(inputFile, encoding) {
 # double colon '::' to make the source clearer. 
 library(tidyverse)
 library(kableExtra)
+library(janitor)
+library(lme4)       # lme4::predict for class `merMod`
 
 rm(list = ls())
 
