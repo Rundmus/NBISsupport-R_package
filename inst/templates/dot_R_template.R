@@ -23,12 +23,14 @@ fn <- list(
   )
 )
 
-# # Brief check if all files exist
-# stopifnot(all(file.exists(c(unlist(fn$i), dirname(unlist(fn$o))))))
-# Confirm if all files exist and are the same as before using MD5 hash
-stopifnot(
-  all(file.exists(c(unlist(fn$i), dirname(unlist(fn$o))))),
-  digest::digest(fn$i$file1, file = T) == "MD5_hash"
+# Brief check if all files exist
+stopifnot(all(file.exists(c(unlist(fn$i), dirname(unlist(fn$o))))))
+# Warn any difference in input file(s) using MD5 hash
+if(!all(
+  tools::md5sum(fn$i$file1) == "MD5_hash"
+)) warning(
+  "One input file or more is not exactly identical to the one used during ",
+  "development of this script."
 )
 
 #----- MAIN --------------------------------------------------------------------
