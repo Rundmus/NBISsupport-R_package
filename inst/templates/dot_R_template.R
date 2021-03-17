@@ -24,7 +24,7 @@ fn <- list(
 )
 
 # # Brief check if all files exist
-# stopifnot(all(file.exists(unlist(fn$i))))
+# stopifnot(all(file.exists(c(unlist(fn$i), dirname(unlist(fn$o))))))
 # Confirm if all files exist and are the same as before using MD5 hash
 stopifnot(
   all(file.exists(c(unlist(fn$i), dirname(unlist(fn$o))))),
