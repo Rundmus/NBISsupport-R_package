@@ -13,6 +13,7 @@ library(tidyverse)
 #----- File names --------------------------------------------------------------
 
 fn <- list(
+  lib = "utils.R",
   i = list(                               #  input
     # clinic = "../data/raw_internal/20210101/an_clinical.xlsx",   # use readxl::read_xlsx
     # tsv = "../data/raw_internal/20210101/a_tsv.tsv"
@@ -24,7 +25,7 @@ fn <- list(
 )
 
 # Brief check if all files exist
-stopifnot(all(file.exists(c(unlist(fn$i), dirname(unlist(fn$o))))))
+stopifnot(all(file.exists(fn$lib, unlist(fn$i), dirname(unlist(fn$o)))))
 # Warn any difference in input file(s) using MD5 hash
 if(!all(
   tools::md5sum(fn$i$file1) == "MD5_hash"

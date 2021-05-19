@@ -52,12 +52,13 @@ options(knitr.kable.NA = '')  # NA is shown as ''
 ```{r Load data, purl=TRUE}
 ## File names
 fn <- list(
+  lib = "utils.R",
 	i = list(                               # input
 	)
 )
 
 # Brief check if all files exist
-stopifnot(all(file.exists(unlist(fn$i))))
+stopifnot(all(file.exists(fn$lib, unlist(fn$i))))
 # # Warn any difference in input file(s) using MD5 hash
 # if(!all(
 #   tools::md5sum(fn$i$file1) == "MD5_hash"
