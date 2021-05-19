@@ -19,8 +19,8 @@ knit: (function(inputFile, encoding) {
 
 ```{r setup, echo=FALSE, include=FALSE}
 ## Pre-loaded packages
-# Please note that many functions were called directly from the package using 
-# double colon '::' to make the source clearer. 
+# Please note that some functions are called directly from the package using
+# double-colon '::' or triple-colon ':::' to make the source clearer.
 library(tidyverse)
 library(kableExtra)
 library(janitor)
@@ -30,7 +30,7 @@ rm(list = ls())
 
 ## Chunk hooks
 knitr::knit_hooks$set(
-  optipng = knitr::hook_optipng   # Optimize PNG plots
+  optipng = knitr::hook_optipng   # Ready to activate optipng (Optimize PNG)
 )
 ## Set default chunk options
 knitr::opts_chunk$set(
@@ -82,6 +82,13 @@ stopifnot(all(file.exists(unlist(fn$i))))
 ----------------------------
 
 #  Appendix
+
+## Methods
+
+_short texts about the methods_
+
+Bioinformatic data handling and statistic analyses were done on `r R.version.string`, 
+together with tidyverse (v. `r packageVersion("tidyverse")`) package.
 
 ##  R environment
 
