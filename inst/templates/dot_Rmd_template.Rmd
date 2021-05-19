@@ -77,18 +77,18 @@ source(fn$lib)  # geom_split_violin, add_n
 # load(fn$i$c01)
 ```
 
-#  Chapter
+# Chapter
 
-##  Quality control
-
-
-----------------------------
-
+## Quality control
 
 
 ----------------------------
 
-#  Appendix
+
+
+----------------------------
+
+# Appendix
 
 ## Methods
 
@@ -97,7 +97,7 @@ _short texts about the methods_
 Bioinformatic data handling and statistic analyses were done on `r R.version.string`, 
 together with tidyverse (v. `r packageVersion("tidyverse")`) package.
 
-##  R environment
+## R environment
 
 ```{r sessionInfo, results='markup'}
 sessionInfo()
