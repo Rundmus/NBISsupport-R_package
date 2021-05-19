@@ -6,8 +6,8 @@
 # -----------------------------------------------------------------------------#
 rm(list = ls())
 
-library(dplyr)
-# library(tidyverse)
+# Please note some functions are called directly using '::' or ':::'
+library(tidyverse)
 # library(NBISsupport)  # renv::install("Rundmus/NBISsupport-R_package")
 
 #----- File names --------------------------------------------------------------
