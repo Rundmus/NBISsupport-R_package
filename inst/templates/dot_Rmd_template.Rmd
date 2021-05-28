@@ -17,7 +17,7 @@ knit: (function(inputFile, encoding) {
   rmarkdown::render(inputFile, encoding= encoding, output_dir= "../reports") })
 ---
 
-```{r setup, echo=FALSE, include=FALSE}
+```{r, echo=FALSE, include=FALSE}
 ## Chunk hooks
 knitr::knit_hooks$set(
   optipng = knitr::hook_optipng   # Ready to activate optipng (Optimize PNG)
@@ -30,7 +30,6 @@ knitr::opts_chunk$set(
   message = FALSE,    # no message from the code
   warning = FALSE,    # no warning from the code
 	cache.path = "../cache/",   # cache the results from heavy analyses
-	cache.lazy = FALSE,      # for large objects
 	fig.width  = 8,
   fig.height = 6,
 	eval.after = "fig.cap",    # to add fig. caption within the chunk
@@ -51,7 +50,7 @@ library(lme4)       # lme4::predict for class `merMod`
 library(foreach)  # %dopar%, foreach
 ```
 
-```{r Load data, purl=TRUE}
+```{r, purl=TRUE}
 rm(list = ls())
 
 ## File names
