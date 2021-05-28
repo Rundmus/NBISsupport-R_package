@@ -18,16 +18,6 @@ knit: (function(inputFile, encoding) {
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}
-## Pre-loaded packages
-# Please note that some functions are called directly from the package using
-# double-colon '::' or triple-colon ':::' to make the source clearer.
-library(tidyverse)
-library(kableExtra)
-library(janitor)
-library(lme4)       # lme4::predict for class `merMod`
-
-rm(list = ls())
-
 ## Chunk hooks
 knitr::knit_hooks$set(
   optipng = knitr::hook_optipng   # Ready to activate optipng (Optimize PNG)
@@ -40,7 +30,8 @@ knitr::opts_chunk$set(
   message = FALSE,    # no message from the code
   warning = FALSE,    # no warning from the code
 	cache.path = "../cache/",   # cache the results from heavy analyses
-  fig.width  = 8,
+	cache.lazy = FALSE,      # for large objects
+	fig.width  = 8,
   fig.height = 6,
 	eval.after = "fig.cap",    # to add fig. caption within the chunk
   optipng = '-o1', # '-o7 -zc9 -zm8 -zs0', # Optimize 'png' plots
@@ -49,7 +40,20 @@ knitr::opts_chunk$set(
 options(knitr.kable.NA = '')  # NA is shown as ''
 ```
 
+```{r, echo=FALSE, include=FALSE, purl=TRUE}
+## Pre-loaded packages
+# Please note that some functions are called directly from the package using
+# double-colon '::' or triple-colon ':::' to make the source clearer.
+library(tidyverse)
+library(kableExtra)
+library(janitor)
+library(lme4)       # lme4::predict for class `merMod`
+library(foreach)  # %dopar%, foreach
+```
+
 ```{r Load data, purl=TRUE}
+rm(list = ls())
+
 ## File names
 fn <- list(
   lib = "utils.R",
