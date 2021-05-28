@@ -51,8 +51,6 @@ library(foreach)  # %dopar%, foreach
 ```
 
 ```{r, purl=TRUE}
-rm(list = ls())
-
 ## File names
 fn <- list(
   lib = "utils.R",
