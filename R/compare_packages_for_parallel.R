@@ -12,6 +12,7 @@
 
 compare_packages_for_parallel <- function() {
   n_cores <- parallel::detectCores() - 1
+  library(foreach)   # %dopar%. foreach
 
   microbenchmark::microbenchmark(
     parallel = {
