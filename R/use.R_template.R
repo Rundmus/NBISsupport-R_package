@@ -1,7 +1,15 @@
-use.template <- function(file,
-                         extension,
-                         template_file
-) {
+# -----------------------------------------------------------------------------#
+#' Use a template
+#'
+#' @param file The name of generating file
+#' @param extension the extension of the `file`
+#' @param template_file the template for the `file`
+#'
+#' @author Mun-Gwan Hong, \email{mungwan@gmail.com}
+#' @return a file created
+# -----------------------------------------------------------------------------#
+
+use.template <- function(file, extension, template_file) {
   stopifnot( !missing(file) )
 
   #  template_path = path to the template file
@@ -56,8 +64,8 @@ use.template <- function(file,
 #'
 #' Create .R or .Rmd file using a template that includes header lines
 #'
-#' @param file The name of the generating file. The ".R" or ".Rmd" extension
-#'   will be added if it is missing.
+#' @param file The name of generating file. The ".R" or ".Rmd" extension will be
+#'   added if it is missing.
 #'
 #' @examples
 #' \dontrun{
@@ -70,9 +78,6 @@ use.template <- function(file,
 #' @export
 #'
 #' @rdname use_template
-# -----------------------------------------------------------------------------#
-# created  : 2017-03-02 by Mun-Gwan
-# modified :
 # -----------------------------------------------------------------------------#
 
 use.R_template <- function(file) {
