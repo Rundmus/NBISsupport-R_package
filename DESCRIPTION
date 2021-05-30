@@ -1,7 +1,7 @@
 Package: NBISsupport
 Type: Package
 Title: A collection of functions useful for support projects in NBIS
-Version: 0.1.0
+Version: 0.2.0
 Author@R: c(person("Mun-Gwan", "Developer", email= "mungwan@gmail.com"))
 Author: Mun-Gwan Hong
 Maintainer: Mun-Gwan Hong <mungwan@gmail.com>
@@ -10,7 +10,6 @@ License: MIT-license
 Encoding: UTF-8
 LazyData: true
 Imports:
-  dplyr,
-  english
+  dplyr
 Suggests: testthat
 RoxygenNote: 7.1.1

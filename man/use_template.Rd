@@ -10,8 +10,8 @@ use.R_template(file)
 use.Rmd_template(file)
 }
 \arguments{
-\item{file}{The name of the generating file. The ".R" or ".Rmd" extension
-will be added if it is missing.}
+\item{file}{The name of generating file. The ".R" or ".Rmd" extension will be
+added if it is missing.}
 }
 \description{
 Create .R or .Rmd file using a template that includes header lines

@@ -2,7 +2,7 @@
 #' Compare packages for parallel computing
 #'
 #' Surprisingly, performance of the packages for parallel computing differs
-#' substantially. This requires a lot of those packages to be loaded.
+#' substantially. This requires a lot of those packages installed.
 #'
 #' @export
 #'
