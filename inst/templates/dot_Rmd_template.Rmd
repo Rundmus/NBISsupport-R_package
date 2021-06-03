@@ -45,6 +45,9 @@ knitr::opts_chunk$set(
 	cache.path = "../cache/",   # cache the results from heavy analyses
 	fig.width  = 8,
   fig.height = 6,
+	dpi = 300,
+	fig.align = "center",  # pdf, line break between figures
+	out.width = if(knitr::is_html_output()) NULL else "70%",  # pdf
 	eval.after = "fig.cap",    # to add fig. caption within the chunk
   optipng = "-o1", # "-o7 -zc9 -zm8 -zs0", # Optimize 'png' plots
 	purl = FALSE      # because most of the code are not to be extracted
