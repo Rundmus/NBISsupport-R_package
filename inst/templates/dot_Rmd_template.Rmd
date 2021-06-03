@@ -3,6 +3,10 @@ title: "{{{ title }}}"
 author: "{{{ author }}}"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
+  # pdf_document:
+  #   toc: true
+  #   toc_depth: 4
+  #   number_sections: true
   html_document:
     theme: cerulean
     toc: true
@@ -11,35 +15,13 @@ output:
     toc_depth: 3
     # code_folding: hide
     number_sections: true
-    # css: styles.css
+    css: styles.css
 # bibliography: citations_in_report.bib
 knit: (function(inputFile, encoding) {
   rmarkdown::render(inputFile, encoding= encoding, output_dir= "../reports") })
 ---
 
-```{r, echo=FALSE, include=FALSE}
-## Chunk hooks
-knitr::knit_hooks$set(
-  optipng = knitr::hook_optipng   # Ready to activate optipng (Optimize PNG)
-)
-## Set default chunk options
-knitr::opts_chunk$set(
-	echo = FALSE,    # comment out for code_folding
-	# dev = c('pdf'), fig.path = '../results/figures/', # export figures to pdf files
-  results = "asis",   # for HTML
-  message = FALSE,    # no message from the code
-  warning = FALSE,    # no warning from the code
-	cache.path = "../cache/",   # cache the results from heavy analyses
-	fig.width  = 8,
-  fig.height = 6,
-	eval.after = "fig.cap",    # to add fig. caption within the chunk
-  optipng = '-o1', # '-o7 -zc9 -zm8 -zs0', # Optimize 'png' plots
-	purl = FALSE      # because most of the code are not to be extracted
-)
-options(knitr.kable.NA = '')  # NA is shown as ''
-```
-
-```{r, echo=FALSE, include=FALSE, purl=TRUE}
+```{r setup, echo=FALSE, include=FALSE}
 ## Pre-loaded packages
 # Please note that some functions are called directly from the package using
 # double-colon '::' or triple-colon ':::' to make the source clearer.
@@ -48,6 +30,30 @@ library(kableExtra)
 library(janitor)
 library(lme4)       # lme4::predict for class `merMod`
 library(foreach)  # %dopar%, foreach
+
+## Chunk hooks
+knitr::knit_hooks$set(
+  optipng = knitr::hook_optipng   # Ready to activate optipng (Optimize PNG)
+)
+## Set default chunk options
+knitr::opts_chunk$set(
+	echo = FALSE,    # comment out for html.code_folding
+	# dev = c('pdf'), fig.path = '../results/figures/', # export figures to pdf files
+  results = "asis",   # for HTML
+  message = FALSE,    # no message from the code
+  warning = FALSE,    # no warning from the code
+	cache.path = "../cache/",   # cache the results from heavy analyses
+	fig.width  = 8,
+  fig.height = 6,
+	eval.after = "fig.cap",    # to add fig. caption within the chunk
+  optipng = "-o1", # "-o7 -zc9 -zm8 -zs0", # Optimize 'png' plots
+	purl = FALSE      # because most of the code are not to be extracted
+)
+options(
+  knitr.duplicate.label = "allow",   # avoid error from multiple usage of child
+  knitr.kable.NA = "",         # NA is shown as ""
+  knitr.table.format = if(knitr::is_html_output()) "html" else "markdown"
+)
 ```
 
 ```{r, purl=TRUE}

@@ -18,42 +18,26 @@ compare_packages_for_parallel <- function() {
     parallel = {
       cl <- parallel::makeCluster(n_cores)
       doParallel::registerDoParallel(cl)
-      foreach(
-        ii = iterators::icount(1000),
-        .inorder = FALSE
-      ) %dopar% {
-        lm(Sepal.Length ~ Species, iris)
-      }
+      foreach(ii = iterators::icount(1000), .inorder = FALSE) %dopar%
+        { lm(Sepal.Length ~ Species, iris) }
       parallel::stopCluster(cl)
     },
     parallel2 = {
       doParallel::registerDoParallel(cores = n_cores)
-      foreach(
-        ii = iterators::icount(1000),
-        .inorder = FALSE
-      ) %dopar% {
-        lm(Sepal.Length ~ Species, iris)
-      }
+      foreach(ii = iterators::icount(1000), .inorder = FALSE) %dopar%
+        { lm(Sepal.Length ~ Species, iris) }
     },
     doSNOW = {
       cl <- snow::makeCluster(n_cores)
       doSNOW::registerDoSNOW(cl)
-      foreach(
-        ii = iterators::icount(1000),
-        .inorder = FALSE
-      ) %dopar% {
-        lm(Sepal.Length ~ Species, iris)
-      }
+      foreach(ii = iterators::icount(1000), .inorder = FALSE) %dopar%
+        { lm(Sepal.Length ~ Species, iris) }
       snow::stopCluster(cl)
     },
     doMC = {
       doMC::registerDoMC(n_cores)
-      foreach(
-        ii = iterators::icount(1000),
-        .inorder = FALSE
-      ) %dopar% {
-        lm(Sepal.Length ~ Species, iris)
-      }
+      foreach(ii = iterators::icount(1000), .inorder = FALSE) %dopar%
+        { lm(Sepal.Length ~ Species, iris) }
     },
     times = 10L
   )
